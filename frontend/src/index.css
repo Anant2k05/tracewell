@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+    @apply bg-surface-container-lowest font-body-md text-body-md text-on-surface antialiased;
+  }
+  ::selection {
+    @apply bg-primary-container text-on-primary-container;
+  }
+  /* Tabular figures for scores, timestamps and IDs (DESIGN.md "Rhythm & Alignment"). */
+  .font-mono,
+  [class*='font-mono-'] {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Match the export: hide scrollbars on WebKit while keeping scroll behaviour. */
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
